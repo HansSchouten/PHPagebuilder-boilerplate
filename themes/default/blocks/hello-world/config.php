@@ -2,6 +2,6 @@
 
 return [
     'title' => 'Hello World',
-	'category' => 'General',
+    'category' => 'General',
     'icon' => 'fa fa-hand-peace-o',
 ];

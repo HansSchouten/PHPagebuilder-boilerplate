@@ -10,7 +10,7 @@ return [
      |
      */
     'project' => [
-        'public_folder' => 'public',
+        'public_folder' => __DIR__ . '/public',
         'pagebuilder_url' => '/admin',
         'language' => 'en',
     ],
@@ -48,7 +48,7 @@ return [
      */
     'login' => [
         'use_login' => true,
-        'login_class' => 'Login/Login',
+        'login_class' => PHPageBuilder\Modules\Login\Login::class,
         'username' => 'admin',
         'password' => 'changethispassword'
     ],
@@ -63,7 +63,7 @@ return [
      */
     'website_manager' => [
         'use_website_manager' => true,
-        'website_manager_class' => 'WebsiteManager/WebsiteManager',
+        'website_manager_class' => PHPageBuilder\Modules\WebsiteManager\WebsiteManager::class,
     ],
 
     /*
@@ -75,7 +75,7 @@ return [
      |
      */
     'pagebuilder' => [
-        'pagebuilder_class' => 'GrapesJS/PageBuilder',
+        'pagebuilder_class' => PHPageBuilder\Modules\GrapesJS\PageBuilder::class,
     ],
 
     /*
@@ -89,7 +89,7 @@ return [
      |
      */
     'themes' => [
-        'folder' => 'themes',
+        'folder' => __DIR__ . '/themes',
         'folder_url' => '/themes',
         'active_theme' => 'default',
     ],
@@ -103,6 +103,6 @@ return [
      |
      */
     'routing' => [
-        'router_class' => 'Router/DatabasePageRouter',
+        'router_class' => PHPageBuilder\Modules\Router\DatabasePageRouter::class
     ],
 ];
