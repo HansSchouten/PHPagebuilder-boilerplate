@@ -1,10 +1,24 @@
 <IfModule mod_rewrite.c>
-	RewriteEngine On
-	Options +FollowSymLinks -MultiViews
+    RewriteEngine On
+    Options +FollowSymLinks -MultiViews
 
-	RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
-	RewriteRule ^ %1 [L,NE,R=302]
+    # non-www. to www.
+    #RewriteCond %{HTTP_HOST} !^www\.
+    #RewriteCond %{HTTP_HOST} !^(.*)\.(.*)\. [NC]
+    #RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
-	RewriteCond %{REQUEST_URI} !^/public/
-	RewriteRule (.*) public/$1 [L]
+    # HTTP to HTTPS
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+
+    RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+    RewriteRule ^ %1 [L,NE,R=301]
+
+    # Remove trailing slashes if not a folder
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule (.*) public/$1 [L]
 </IfModule>
