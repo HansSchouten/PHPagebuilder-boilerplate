@@ -18,9 +18,9 @@ composer require hansschouten/phpagebuilder @dev
 Now uncomment line 7 of `public/index.php`.
 
 ### Install PHPagebuilder without Composer
-If you don't want to use composer, simply download the latest version of PHPagebuilder [here](https://github.com/HansSchouten/PHPagebuilder) and upload it a directory called `phpagebuilder` inside your webroot directory.
+If you don't want to use composer, simply download the latest version of PHPagebuilder [here](https://github.com/HansSchouten/PHPagebuilder) and upload it in a directory called `phpagebuilder` inside your webroot directory.
 
-Now uncomment line 10,11 of `public/index.php`.
+Now uncomment lines 10 and 11 of `public/index.php`.
 
 ### Add the config file
 Copy the `config.example.php` from your version of the [PHPagebuilder project](https://github.com/HansSchouten/PHPagebuilder) and add it as `config.php` to your website's root directory.
