@@ -12,7 +12,7 @@ To setup your website download the boilerplate and upload it to the webroot dire
 To install PHPagebuilder via composer, SSH to your webroot directory and run the following command:
 
 ```
-composer require hansschouten/phpagebuilder @dev
+composer require hansschouten/phpagebuilder
 ```
 
 Now uncomment line 7 of `public/index.php`.
