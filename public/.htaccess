@@ -2,7 +2,24 @@
     RewriteEngine On
     RewriteBase /
 
-    # Rewrite to index.php
+    # Redirect non-www. to www. (except when on a subdomain)
+    RewriteCond %{HTTP_HOST} !^www\.
+    RewriteCond %{HTTP_HOST} !^(.*)\.(.*)\. [NC]
+    RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+    # Redirect HTTP to HTTPS
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
+    # If the requested URL contains /public/, remove this using a redirect
+    RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+    RewriteRule ^ %1 [R=301,L]
+
+    # Remove any trailing slashes using a redirect
+    RewriteCond %{REQUEST_URI} /public/(.+)/$
+    RewriteRule ^ %1 [R=301,L]
+
+    # Rewrite all requests to index.php
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
