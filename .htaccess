@@ -1,6 +1,5 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /
 
     # Redirect non-www. to www. (except when on a subdomain)
     RewriteCond %{HTTP_HOST} !^www\.
