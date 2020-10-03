@@ -23,8 +23,11 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
-    # Allow accessing files with URLs in format /themes/{theme}/public/{file}
+    # Allow direct access to theme files with URL format: /themes/{theme}/public/{file}
     RewriteRule ^themes/([^/]+)/public/(.*)$ themes/$1/public/$2 [L]
+
+    # Allow direct access to uploaded files with URL format: /uploads/{filepath;,}
+    RewriteRule ^uploads/(.*)$ uploads/$1 [L]
 
     # Rewrite all remaining requests to index.php
     RewriteRule ^ index.php [L]
