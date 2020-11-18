@@ -14,5 +14,12 @@
 <?= $body ?>
 
 <script src="<?= phpb_theme_asset('js/app.js') ?>"></script>
+
+<!-- Run PHPageBuilder script.js files -->
+<script type="text/javascript">
+    document.querySelectorAll("script").forEach(function(scriptTag) {
+        scriptTag.dispatchEvent(new Event('run-script'));
+    });
+</script>
 </body>
 </html>
